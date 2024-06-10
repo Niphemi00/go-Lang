@@ -2,7 +2,7 @@ package main
 import "fmt"
 //PROFIT CALCULATOR APP
 
-func main() {
+func profitcal() {
 	fmt.Println("Welcome to the Profit Calculator app")
 	calculateProfit()
 }
