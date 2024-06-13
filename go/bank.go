@@ -1,7 +1,9 @@
 package main
+
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -9,10 +11,10 @@ import (
 func main() {
 	bankApp()
 }
-
+const balanceTxt = "balance.txt"
 // Writing balance to file
 func writeBalanceToFile(accountBalance float64){
-	file, err := os.Create("balance.txt")
+	file, err := os.Create(balanceTxt)
 	currentTime := time.Now()
 	formattedTime := currentTime.Format("2006-01-02 15:04:05")
 	if err != nil {
@@ -21,10 +23,17 @@ func writeBalanceToFile(accountBalance float64){
 		fmt.Fprintf(file, "Balance as of %s is $%.2f\n", formattedTime, accountBalance)
 	}
 }
+// Reading balance from a file
+func readBalanceFromFile() float64 {
+	data, _ := os.ReadFile(balanceTxt)
+	balanceTxt := string(data)
+	balance, _ := strconv.ParseFloat(balanceTxt, 0644)
+	return balance
+}
 
 // Bank app
 func bankApp() {
-	var accountBalance float64 = 1000.0
+	var accountBalance float64 = readBalanceFromFile()
 	var userChoice int
 	var amount float64
 	fmt.Println("Welcome to bank app")
