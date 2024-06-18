@@ -1,4 +1,4 @@
-package main
+package bankops
 
 import (
 	"fmt"
@@ -8,9 +8,6 @@ import (
 )
 
 
-func main() {
-	bankApp()
-}
 const balanceTxt = "balance.txt"
 // Writing balance to file
 func writeBalanceToFile(accountBalance float64){
@@ -32,8 +29,9 @@ func readBalanceFromFile() float64 {
 }
 
 // Bank app
-func bankApp() {
-	var accountBalance float64 = readBalanceFromFile()
+
+func BankApp() {
+	var accountBalance float64
 	var userChoice int
 	var amount float64
 	fmt.Println("Welcome to bank app")
@@ -71,7 +69,7 @@ func bankApp() {
 			fmt.Println("Your new balance is:", accountBalance)
 			writeBalanceToFile(accountBalance)
 		}else if userChoice == 3 {
-			fmt.Println("Your current balance is: ", accountBalance)
+			fmt.Println("Your current balance is: ", readBalanceFromFile())
 		} else {
 			fmt.Println("Exiting the bank app....Thank you for choosing us")
 			return

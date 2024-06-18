@@ -26,6 +26,9 @@ func weightConversion() {
 			fmt.Scan(&weight)
 			weight = weight / 2.2
 			fmt.Printf("Your weight in kilograms is %vkg\n", weight)
+		}else {
+			fmt.Println("Exiting the bank app....Thank you for choosing us")
+			return
 		}
 	}
 }
